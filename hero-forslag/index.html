@@ -283,6 +283,41 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .h5-track span { position: absolute; left: 8px; bottom: 8px; font-family: var(--f-mono); font-size: 10.5px; background: rgba(21, 24, 41, .78); padding: 3px 7px; border-radius: 3px; }
 @keyframes h5-scroll { to { transform: translateX(-50%); } }
 
+/* ================= 6. FULLBILD ================= */
+.lbl-new { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: var(--amber); color: var(--ink); padding: 3px 8px; border-radius: 3px; }
+.lbl-pick { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
+.lbl-pick > span { font-size: 13px; font-weight: 600; color: var(--slate); margin-right: 4px; }
+.lbl-pick button { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--navy); background: var(--white); border: 1px solid var(--mist); border-radius: 999px; padding: .45em .95em; cursor: pointer; }
+.lbl-pick button:hover { border-color: var(--navy); }
+.lbl-pick button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.h6 { position: relative; isolation: isolate; overflow: hidden; color: var(--white); background: var(--ink); min-height: max(620px, 100svh); display: grid; grid-template-rows: auto 1fr auto; }
+.h6-bg { position: absolute; inset: 0; z-index: -1; }
+.h6-bg img { width: 100%; height: 100%; object-fit: cover; }
+.h6-bg::after { content: ""; position: absolute; inset: 0; background:
+  radial-gradient(ellipse 62% 42% at 50% 52%, rgba(10, 12, 20, .42), rgba(10, 12, 20, 0) 72%),
+  linear-gradient(180deg, rgba(10, 12, 20, .6) 0%, rgba(10, 12, 20, .18) 26%, rgba(10, 12, 20, .22) 64%, rgba(10, 12, 20, .72) 100%); }
+.h6 .top .btn { border-radius: 6px; padding: .7em 1.2em; font-size: 15px; }
+.h6-main { align-self: center; display: grid; justify-items: center; text-align: center; gap: 22px; padding-block: 32px 48px; }
+.h6-eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); text-shadow: 0 1px 12px rgba(0, 0, 0, .55); }
+.h6-trust, .h6-lead { text-shadow: 0 1px 14px rgba(0, 0, 0, .45); }
+.h6 h1 { margin: 0; font-family: var(--f-archivo); font-weight: 700; font-size: clamp(2.7rem, 6.6vw, 5.6rem); line-height: 1.02; letter-spacing: -.025em; text-shadow: 0 2px 28px rgba(0, 0, 0, .25); }
+.h6-lead { margin: 0; max-width: 56ch; font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.6; color: rgba(255, 255, 255, .9); }
+.h6-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+.h6 .btn { border-radius: 6px; }
+.h6-ghost { color: var(--white); border-color: rgba(255, 255, 255, .75); }
+.h6-ghost:hover { background: rgba(255, 255, 255, .12); }
+.h6-trust { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-size: 14px; color: rgba(255, 255, 255, .85); }
+.h6-trust li { display: inline-flex; align-items: center; gap: .45em; }
+.h6-trust .ico { color: var(--amber); }
+.h6-scroll { justify-self: center; display: grid; justify-items: center; gap: 8px; padding-bottom: 24px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: rgba(255, 255, 255, .75); }
+.h6-scroll i { width: 2px; height: 34px; background: linear-gradient(var(--amber), rgba(236, 165, 24, 0)); transform-origin: top; animation: h6-drop 2s ease-in-out infinite; }
+@keyframes h6-drop { 0% { transform: scaleY(.2); opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(.2); opacity: .4; } }
+@media (max-width: 640px) {
+  .h6-cta { width: 100%; }
+  .h6-cta .btn { flex: 1 1 100%; }
+  .h6-trust { font-size: 13px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .h1-bg picture + picture { opacity: 0; }
@@ -309,9 +344,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <header class="intro">
   <div class="wrap">
     <p class="intro-kicker">tuveel.se · modernisering · steg 1 av 2</p>
-    <p class="intro-title">Fem förslag på startsidans hero</p>
-    <p class="lead">Alla fem bygger på texterna och bilderna från nuvarande tuveel.se och på logotypens färger, marinblå och bärnsten. Bilderna är Tuve Els egna projektfoton. Välj ett förslag, eller blanda delar från flera, så bygger jag resten av sidan i samma stil.</p>
+    <p class="intro-title">Sex förslag på startsidans hero</p>
+    <p class="lead">Alla förslag bygger på texterna och bilderna från nuvarande tuveel.se och på logotypens färger, marinblå och bärnsten. Bilderna är Tuve Els egna projektfoton. Välj ett förslag, eller blanda delar från flera, så bygger jag resten av sidan i samma stil.</p>
     <ul class="jump">
+      <li><a href="#forslag-6"><span>6</span>Fullbild (nytt)</a></li>
       <li><a href="#forslag-1"><span>1</span>Kvällsljus</a></li>
       <li><a href="#forslag-2"><span>2</span>Nordiskt ljus</a></li>
       <li><a href="#forslag-3"><span>3</span>Eljour först</a></li>
@@ -321,10 +357,62 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   </div>
 </header>
 
+<!-- ======================================================= 6 -->
+<div class="lbl" id="forslag-6">
+  <div class="wrap">
+    <span class="lbl-no">Förslag 6</span>
+    <h2>Fullbild</h2>
+    <span class="lbl-new">Nytt</span>
+    <p>En klassisk hero: en bild över hela skärmen, menyn ovanpå bilden, centrerad rubrik och två tydliga knappar. Inga effekter utöver en liten scrollpil.</p>
+    <span class="lbl-type">Archivo + Hanken Grotesk</span>
+    <div class="lbl-pick" role="group" aria-label="Byt bild i förslag 6">
+      <span>Prova bild:</span>
+      <button type="button" aria-pressed="true" data-wide="../assets/img/hero/kabelschakt-solnedgang-bred-1600.webp" data-tall="../assets/img/projekt/kabelschakt-solnedgang-800.webp">Kabelschakt i solnedgång</button>
+      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">Bostadsgård, kväll</button>
+      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/trappa-led-belysning-bred-1600.webp" data-tall="../assets/img/projekt/trappa-led-belysning-800.webp">LED-trappa</button>
+      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/stock-elinstallation-2400.webp" data-tall="../assets/img/tjanster/elinstallation-800.webp">Stockfoto: elinstallation</button>
+    </div>
+  </div>
+</div>
+<section class="h6" aria-label="Förslag 6: Fullbild">
+  <div class="h6-bg" aria-hidden="true">
+    <picture>
+      <source id="h6-src" media="(max-width: 700px)" srcset="../assets/img/projekt/kabelschakt-solnedgang-800.webp">
+      <img id="h6-img" src="../assets/img/hero/kabelschakt-solnedgang-bred-1600.webp" alt="">
+    </picture>
+  </div>
+
+  <div class="wrap top">
+    <a class="logo" href="#forslag-6"><img src="../assets/brand/tuve-el-liggande-vit.svg" alt="Tuve El AB"></a>
+    <nav class="nav" aria-label="Huvudmeny"><a href="#">Tjänster</a><a href="#">Projekt</a><a href="#">Om oss</a><a href="#">Kontakt</a></nav>
+    <div class="top-end">
+      <a class="btn btn-amber hide-sm" href="#">Begär offert</a>
+      <button class="menu-btn" type="button" aria-label="Öppna meny"><svg><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+
+  <div class="wrap h6-main">
+    <p class="h6-eyebrow">Tuve El AB · Göteborg</p>
+    <h1>Din elektriker i Göteborg</h1>
+    <p class="h6-lead">Elinstallation, belysning, elcentraler, golvvärme och laddboxar för företag, fastighetsägare och privatpersoner.</p>
+    <div class="h6-cta">
+      <a class="btn btn-amber" href="#">Begär kostnadsfri offert <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn h6-ghost" href="tel:+46735528005"><svg class="ico"><use href="#i-phone"/></svg>Ring 0735-52 80 05</a>
+    </div>
+    <ul class="h6-trust">
+      <li><svg class="ico"><use href="#i-check"/></svg>Eljour dygnet runt</li>
+      <li><svg class="ico"><use href="#i-check"/></svg>Kostnadsfri offert</li>
+      <li><svg class="ico"><use href="#i-check"/></svg>Certifikat från Elsäkerhetsverket</li>
+    </ul>
+  </div>
+
+  <a class="h6-scroll" href="#forslag-1"><span>Våra tjänster</span><i aria-hidden="true"></i></a>
+</section>
+
 <!-- ======================================================= 1 -->
 <div class="lbl" id="forslag-1">
   <div class="wrap">
-    <span class="lbl-no">Förslag 1 av 5</span>
+    <span class="lbl-no">Förslag 1</span>
     <h2>Kvällsljus</h2>
     <p>Helbild från egna belysningsprojekt som långsamt tonar mellan två kvällsbilder, som gamla sajtens bildspel men med riktiga jobb i stället för stockfoton. Tydlig offertknapp, telefon och behörigheter direkt i första vyn.</p>
     <span class="lbl-type">Archivo Expanded + Hanken Grotesk</span>
@@ -376,7 +464,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <!-- ======================================================= 2 -->
 <div class="lbl" id="forslag-2">
   <div class="wrap">
-    <span class="lbl-no">Förslag 2 av 5</span>
+    <span class="lbl-no">Förslag 2</span>
     <h2>Nordiskt ljus</h2>
     <p>Ljus, lugn och skandinavisk. Rubriken visar bredden från elcentral till spotlight, tjänsterna syns som etiketter och tre egna projektbilder bildar ett kollage. Passar privatpersoner som renoverar.</p>
     <span class="lbl-type">Familjen Grotesk + Hanken Grotesk</span>
@@ -422,7 +510,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <!-- ======================================================= 3 -->
 <div class="lbl" id="forslag-3">
   <div class="wrap">
-    <span class="lbl-no">Förslag 3 av 5</span>
+    <span class="lbl-no">Förslag 3</span>
     <h2>Eljour först</h2>
     <p>Byggd för att ge samtal och förfrågningar. Eljouren och telefonnumret tar störst plats och ett kort offertformulär ligger direkt i heron, med samma tjänsteval som gamla formuläret. Det fullständiga formuläret kommer i nästa steg.</p>
     <span class="lbl-type">Barlow Condensed + Barlow</span>
@@ -477,7 +565,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <!-- ======================================================= 4 -->
 <div class="lbl" id="forslag-4">
   <div class="wrap">
-    <span class="lbl-no">Förslag 4 av 5</span>
+    <span class="lbl-no">Förslag 4</span>
     <h2>Bento</h2>
     <p>Allt viktigt i ett rutnät redan i första vyn: budskap, eljour, totalentreprenad, alla sex tjänster, behörigheter och tre projektbilder. Modernt och överblickbart, och lätt att byta ut rutor över tid.</p>
     <span class="lbl-type">Bricolage Grotesque + Hanken Grotesk</span>
@@ -543,7 +631,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <!-- ======================================================= 5 -->
 <div class="lbl" id="forslag-5">
   <div class="wrap">
-    <span class="lbl-no">Förslag 5 av 5</span>
+    <span class="lbl-no">Förslag 5</span>
     <h2>Kretsen</h2>
     <p>Typografiskt och djärvt. En sladd, lånad från logotypens stickpropp, ritas fram och kopplas in i offertknappen som då lyser upp. Under rubriken rullar ett filmband med egna projektbilder.</p>
     <span class="lbl-type">Unbounded + Hanken Grotesk + JetBrains Mono</span>
@@ -600,6 +688,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <script>
 (function () {
+  // Förslag 6: byt bakgrundsbild
+  var picks = document.querySelectorAll('.lbl-pick button');
+  picks.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.getElementById('h6-src').srcset = btn.dataset.tall;
+      document.getElementById('h6-img').src = btn.dataset.wide;
+      picks.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+    });
+  });
+
   // Förslag 3: formuläret är en förhandsvisning
   var form = document.getElementById('h3-form');
   form.addEventListener('submit', function (e) {
