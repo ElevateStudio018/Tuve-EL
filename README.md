@@ -36,7 +36,7 @@ hero-forslag/
 | 3 | Eljour först | Konverteringsfokus: eljour och telefonnummer störst, kort offertformulär direkt i heron |
 | 4 | Bento | Rutnät med budskap, eljour, totalentreprenad, alla tjänster, behörigheter och bilder |
 | 5 | Kretsen | Typografisk; en animerad sladd kopplas in i offertknappen, filmband med projektbilder |
-| 6 | Fullbild med video | Avskalad klassisk hero med bakgrundsvideo från Coverr (glödlampor eller stad på natten), rubrik, en mening, en knapp och telefon |
+| 6 | Fullbild med video | Avskalad klassisk hero där tre Coverr-videor spelas efter varandra (glödlampor, skruvdragare, stad på natten); rubrik, en mening, en knapp och telefon |
 
 ## Att stämma av med kunden
 

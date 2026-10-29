@@ -363,20 +363,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <span class="lbl-no">Förslag 6</span>
     <h2>Fullbild</h2>
     <span class="lbl-new">Med video</span>
-    <p>Avskalad klassisk hero med bakgrundsvideo från Coverr (fri att använda kommersiellt). En rubrik, en mening och en knapp. Mobilen får en lättare version av videon.</p>
+    <p>Avskalad klassisk hero med tre bakgrundsvideor från Coverr (fria att använda kommersiellt) som spelas efter varandra: glödlampor, skruvdragare och stad på natten. Mobilen får stående versioner.</p>
     <span class="lbl-type">Hanken Grotesk</span>
-    <div class="lbl-pick" role="group" aria-label="Byt video i förslag 6">
-      <span>Prova video:</span>
-      <button type="button" aria-pressed="true" data-video="glodlampor">Glödlampor</button>
-      <button type="button" aria-pressed="false" data-video="stad-natt">Stad på natten</button>
-    </div>
   </div>
 </div>
 <section class="h6" aria-label="Förslag 6: Fullbild">
   <div class="h6-bg" aria-hidden="true">
     <img id="h6-img" src="../assets/video/glodlampor-poster.webp" alt="">
-    <!-- Videor från Coverr, se assets/video/KALLOR.md. Stillbilden ovan visas tills videon spelar. -->
-    <video class="h6-video" id="h6-video" muted loop playsinline preload="auto"></video>
+    <!-- Videor från Coverr, se assets/video/KALLOR.md. Stillbilden ovan visas tills första videon spelar. -->
+    <video class="h6-video" muted playsinline preload="auto"></video>
+    <video class="h6-video" muted playsinline preload="auto"></video>
   </div>
   <button class="h6-pause" id="h6-pause" type="button" aria-label="Pausa video" hidden><svg viewBox="0 0 14 14"><path id="h6-pause-ico" d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg></button>
 
@@ -678,36 +674,38 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <script>
 (function () {
-  // Förslag 6: bakgrundsvideo, stillbilden ligger kvar som reserv
-  var vid = document.getElementById('h6-video');
-  var poster = document.getElementById('h6-img');
+  // Förslag 6: tre videor i följd som tonar över i varandra, stillbilden ligger kvar som reserv
+  var playlist = ['glodlampor', 'skruvdragare', 'stad-natt'];
+  var vids = document.querySelectorAll('.h6-video');
   var pauseBtn = document.getElementById('h6-pause');
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function loadVideo(name) {
-    poster.src = '../assets/video/' + name + '-poster.webp';
-    if (still) { return; }
-    vid.classList.remove('on');
-    pauseBtn.setAttribute('aria-label', 'Pausa video');
-    document.getElementById('h6-pause-ico').setAttribute('d', 'M3 2h3v10H3zM8 2h3v10H8z');
-    vid.src = '../assets/video/' + name + (window.innerWidth <= 700 ? '-mobil.mp4' : '-1080.mp4');
-    var p = vid.play();
-    if (p && p.catch) { p.catch(function () {}); }
-  }
-  var picks = document.querySelectorAll('.lbl-pick button');
-  picks.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      loadVideo(btn.dataset.video);
-      picks.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-    });
-  });
-  loadVideo('glodlampor');
+  var size = window.innerWidth <= 700 ? '-mobil.mp4' : '-1080.mp4';
+  var cur = 0, idx = 0, paused = false;
+  function srcFor(i) { return '../assets/video/' + playlist[i % playlist.length] + size; }
+  function play(v) { var p = v.play(); if (p && p.catch) { p.catch(function () {}); } }
   if (!still) {
-    vid.addEventListener('playing', function () { vid.classList.add('on'); pauseBtn.hidden = false; });
+    vids[0].src = srcFor(0);
+    vids[1].src = srcFor(1);
+    play(vids[0]);
+    vids.forEach(function (v, n) {
+      v.addEventListener('playing', function () { if (n === cur) { v.classList.add('on'); pauseBtn.hidden = false; } });
+      v.addEventListener('ended', function () {
+        if (n !== cur) { return; }
+        var next = vids[1 - cur];
+        idx += 1;
+        cur = 1 - cur;
+        play(next);
+        next.classList.add('on');
+        v.classList.remove('on');
+        // ladda klippet efter nästa i den video som just blev ledig
+        setTimeout(function () { v.src = srcFor(idx + 1); v.load(); }, 900);
+      });
+    });
     pauseBtn.addEventListener('click', function () {
-      var paused = vid.paused;
-      if (paused) { vid.play(); } else { vid.pause(); }
-      pauseBtn.setAttribute('aria-label', paused ? 'Pausa video' : 'Spela video');
-      document.getElementById('h6-pause-ico').setAttribute('d', paused ? 'M3 2h3v10H3zM8 2h3v10H8z' : 'M3 1.5l9 5.5-9 5.5z');
+      paused = !paused;
+      if (paused) { vids[cur].pause(); } else { play(vids[cur]); }
+      pauseBtn.setAttribute('aria-label', paused ? 'Spela video' : 'Pausa video');
+      document.getElementById('h6-pause-ico').setAttribute('d', paused ? 'M3 1.5l9 5.5-9 5.5z' : 'M3 2h3v10H3zM8 2h3v10H8z');
     });
   }
 
