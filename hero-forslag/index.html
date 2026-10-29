@@ -283,39 +283,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .h5-track span { position: absolute; left: 8px; bottom: 8px; font-family: var(--f-mono); font-size: 10.5px; background: rgba(21, 24, 41, .78); padding: 3px 7px; border-radius: 3px; }
 @keyframes h5-scroll { to { transform: translateX(-50%); } }
 
-/* ================= 6. FULLBILD ================= */
+/* ================= 6. FULLBILD (clean) ================= */
 .lbl-new { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: var(--amber); color: var(--ink); padding: 3px 8px; border-radius: 3px; }
 .lbl-pick { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
 .lbl-pick > span { font-size: 13px; font-weight: 600; color: var(--slate); margin-right: 4px; }
 .lbl-pick button { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--navy); background: var(--white); border: 1px solid var(--mist); border-radius: 999px; padding: .45em .95em; cursor: pointer; }
 .lbl-pick button:hover { border-color: var(--navy); }
 .lbl-pick button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
-.h6 { position: relative; isolation: isolate; overflow: hidden; color: var(--white); background: var(--ink); min-height: max(620px, 100svh); display: grid; grid-template-rows: auto 1fr auto; }
+.h6 { position: relative; isolation: isolate; overflow: hidden; color: var(--white); background: var(--ink); min-height: max(600px, 100svh); display: grid; grid-template-rows: auto 1fr; font-family: var(--f-hanken); }
 .h6-bg { position: absolute; inset: 0; z-index: -1; }
 .h6-bg img { width: 100%; height: 100%; object-fit: cover; }
-.h6-bg::after { content: ""; position: absolute; inset: 0; background:
-  radial-gradient(ellipse 62% 42% at 50% 52%, rgba(10, 12, 20, .42), rgba(10, 12, 20, 0) 72%),
-  linear-gradient(180deg, rgba(10, 12, 20, .6) 0%, rgba(10, 12, 20, .18) 26%, rgba(10, 12, 20, .22) 64%, rgba(10, 12, 20, .72) 100%); }
-.h6 .top .btn { border-radius: 6px; padding: .7em 1.2em; font-size: 15px; }
-.h6-main { align-self: center; display: grid; justify-items: center; text-align: center; gap: 22px; padding-block: 32px 48px; }
-.h6-eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); text-shadow: 0 1px 12px rgba(0, 0, 0, .55); }
-.h6-trust, .h6-lead { text-shadow: 0 1px 14px rgba(0, 0, 0, .45); }
-.h6 h1 { margin: 0; font-family: var(--f-archivo); font-weight: 700; font-size: clamp(2.7rem, 6.6vw, 5.6rem); line-height: 1.02; letter-spacing: -.025em; text-shadow: 0 2px 28px rgba(0, 0, 0, .25); }
-.h6-lead { margin: 0; max-width: 56ch; font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.6; color: rgba(255, 255, 255, .9); }
-.h6-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
-.h6 .btn { border-radius: 6px; }
-.h6-ghost { color: var(--white); border-color: rgba(255, 255, 255, .75); }
-.h6-ghost:hover { background: rgba(255, 255, 255, .12); }
-.h6-trust { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-size: 14px; color: rgba(255, 255, 255, .85); }
-.h6-trust li { display: inline-flex; align-items: center; gap: .45em; }
-.h6-trust .ico { color: var(--amber); }
-.h6-scroll { justify-self: center; display: grid; justify-items: center; gap: 8px; padding-bottom: 24px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: rgba(255, 255, 255, .75); }
-.h6-scroll i { width: 2px; height: 34px; background: linear-gradient(var(--amber), rgba(236, 165, 24, 0)); transform-origin: top; animation: h6-drop 2s ease-in-out infinite; }
-@keyframes h6-drop { 0% { transform: scaleY(.2); opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(.2); opacity: .4; } }
+.h6-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 12, 20, .45) 0%, rgba(10, 12, 20, .08) 22%, rgba(10, 12, 20, .1) 50%, rgba(10, 12, 20, .7) 100%); }
+.h6 .top { padding-block: 28px; }
+.h6 .top .logo img { height: 44px; }
+.h6 .nav { font-size: 15px; font-weight: 500; gap: 36px; }
+.h6 .nav a:hover { text-decoration-color: var(--white); text-decoration-thickness: 1px; }
+.h6-contact { font-size: 15px; font-weight: 500; text-decoration: none; padding: .55em 1.1em; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; }
+.h6-contact:hover { background: var(--white); color: var(--ink); }
+.h6-main { align-self: end; padding-block: 40px clamp(48px, 9vh, 96px); display: grid; gap: 22px; justify-items: start; }
+.h6 h1 { margin: 0; font-family: var(--f-hanken); font-weight: 500; font-size: clamp(2.6rem, 6vw, 5.2rem); line-height: 1.02; letter-spacing: -.035em; max-width: 14ch; }
+.h6-lead { margin: 0; max-width: 44ch; font-size: clamp(1.05rem, 1.3vw, 1.2rem); line-height: 1.55; color: rgba(255, 255, 255, .85); }
+.h6-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 8px; }
+.h6-btn { display: inline-flex; align-items: center; gap: .6em; background: var(--white); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; padding: .95em 1.6em; border-radius: 999px; transition: background-color .2s, color .2s; }
+.h6-btn:hover { background: var(--amber); }
+.h6-tel { color: var(--white); text-decoration: none; font-weight: 500; font-variant-numeric: tabular-nums; border-bottom: 1px solid rgba(255, 255, 255, .5); padding-bottom: 2px; }
+.h6-tel:hover { border-color: var(--white); }
 @media (max-width: 640px) {
-  .h6-cta { width: 100%; }
-  .h6-cta .btn { flex: 1 1 100%; }
-  .h6-trust { font-size: 13px; }
+  .h6 .top .logo img { height: 38px; }
+  .h6-cta { flex-direction: column; align-items: flex-start; }
+  .h6-bg::after { background: linear-gradient(180deg, rgba(10, 12, 20, .45) 0%, rgba(10, 12, 20, .05) 25%, rgba(10, 12, 20, .25) 50%, rgba(10, 12, 20, .82) 100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -347,7 +343,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <p class="intro-title">Sex förslag på startsidans hero</p>
     <p class="lead">Alla förslag bygger på texterna och bilderna från nuvarande tuveel.se och på logotypens färger, marinblå och bärnsten. Bilderna är Tuve Els egna projektfoton. Välj ett förslag, eller blanda delar från flera, så bygger jag resten av sidan i samma stil.</p>
     <ul class="jump">
-      <li><a href="#forslag-6"><span>6</span>Fullbild (nytt)</a></li>
+      <li><a href="#forslag-6"><span>6</span>Fullbild</a></li>
       <li><a href="#forslag-1"><span>1</span>Kvällsljus</a></li>
       <li><a href="#forslag-2"><span>2</span>Nordiskt ljus</a></li>
       <li><a href="#forslag-3"><span>3</span>Eljour först</a></li>
@@ -362,14 +358,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <div class="wrap">
     <span class="lbl-no">Förslag 6</span>
     <h2>Fullbild</h2>
-    <span class="lbl-new">Nytt</span>
-    <p>En klassisk hero: en bild över hela skärmen, menyn ovanpå bilden, centrerad rubrik och två tydliga knappar. Inga effekter utöver en liten scrollpil.</p>
-    <span class="lbl-type">Archivo + Hanken Grotesk</span>
+    <span class="lbl-new">Ny version</span>
+    <p>Avskalad klassisk hero: en bild, en rubrik, en mening och en knapp. Ingen extra grafik, inga effekter.</p>
+    <span class="lbl-type">Hanken Grotesk</span>
     <div class="lbl-pick" role="group" aria-label="Byt bild i förslag 6">
       <span>Prova bild:</span>
-      <button type="button" aria-pressed="true" data-wide="../assets/img/hero/kabelschakt-solnedgang-bred-1600.webp" data-tall="../assets/img/projekt/kabelschakt-solnedgang-800.webp">Kabelschakt i solnedgång</button>
-      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">Bostadsgård, kväll</button>
+      <button type="button" aria-pressed="true" data-wide="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">Bostadsgård, kväll</button>
       <button type="button" aria-pressed="false" data-wide="../assets/img/hero/trappa-led-belysning-bred-1600.webp" data-tall="../assets/img/projekt/trappa-led-belysning-800.webp">LED-trappa</button>
+      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/fasadbelysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/fasadbelysning-kvall-800.webp">Fasad, kväll</button>
       <button type="button" aria-pressed="false" data-wide="../assets/img/hero/stock-elinstallation-2400.webp" data-tall="../assets/img/tjanster/elinstallation-800.webp">Stockfoto: elinstallation</button>
     </div>
   </div>
@@ -377,36 +373,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <section class="h6" aria-label="Förslag 6: Fullbild">
   <div class="h6-bg" aria-hidden="true">
     <picture>
-      <source id="h6-src" media="(max-width: 700px)" srcset="../assets/img/projekt/kabelschakt-solnedgang-800.webp">
-      <img id="h6-img" src="../assets/img/hero/kabelschakt-solnedgang-bred-1600.webp" alt="">
+      <source id="h6-src" media="(max-width: 700px)" srcset="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">
+      <img id="h6-img" src="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" alt="">
     </picture>
   </div>
 
   <div class="wrap top">
     <a class="logo" href="#forslag-6"><img src="../assets/brand/tuve-el-liggande-vit.svg" alt="Tuve El AB"></a>
-    <nav class="nav" aria-label="Huvudmeny"><a href="#">Tjänster</a><a href="#">Projekt</a><a href="#">Om oss</a><a href="#">Kontakt</a></nav>
+    <nav class="nav" aria-label="Huvudmeny"><a href="#">Tjänster</a><a href="#">Projekt</a><a href="#">Om oss</a></nav>
     <div class="top-end">
-      <a class="btn btn-amber hide-sm" href="#">Begär offert</a>
+      <a class="h6-contact hide-sm" href="#">Kontakt</a>
       <button class="menu-btn" type="button" aria-label="Öppna meny"><svg><use href="#i-menu"/></svg></button>
     </div>
   </div>
 
   <div class="wrap h6-main">
-    <p class="h6-eyebrow">Tuve El AB · Göteborg</p>
     <h1>Din elektriker i Göteborg</h1>
-    <p class="h6-lead">Elinstallation, belysning, elcentraler, golvvärme och laddboxar för företag, fastighetsägare och privatpersoner.</p>
+    <p class="h6-lead">Elinstallation, belysning och eljour dygnet runt för hem, företag och fastigheter.</p>
     <div class="h6-cta">
-      <a class="btn btn-amber" href="#">Begär kostnadsfri offert <svg class="ico"><use href="#i-arrow"/></svg></a>
-      <a class="btn h6-ghost" href="tel:+46735528005"><svg class="ico"><use href="#i-phone"/></svg>Ring 0735-52 80 05</a>
+      <a class="h6-btn" href="#">Begär offert <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="h6-tel" href="tel:+46735528005">0735-52 80 05</a>
     </div>
-    <ul class="h6-trust">
-      <li><svg class="ico"><use href="#i-check"/></svg>Eljour dygnet runt</li>
-      <li><svg class="ico"><use href="#i-check"/></svg>Kostnadsfri offert</li>
-      <li><svg class="ico"><use href="#i-check"/></svg>Certifikat från Elsäkerhetsverket</li>
-    </ul>
   </div>
-
-  <a class="h6-scroll" href="#forslag-1"><span>Våra tjänster</span><i aria-hidden="true"></i></a>
 </section>
 
 <!-- ======================================================= 1 -->

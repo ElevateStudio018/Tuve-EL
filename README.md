@@ -35,7 +35,7 @@ hero-forslag/
 | 3 | Eljour först | Konverteringsfokus: eljour och telefonnummer störst, kort offertformulär direkt i heron |
 | 4 | Bento | Rutnät med budskap, eljour, totalentreprenad, alla tjänster, behörigheter och bilder |
 | 5 | Kretsen | Typografisk; en animerad sladd kopplas in i offertknappen, filmband med projektbilder |
-| 6 | Fullbild | Klassisk hero: bild över hela skärmen, menyn ovanpå, centrerad rubrik och två knappar. Fyra bildval att prova |
+| 6 | Fullbild | Avskalad klassisk hero: bild över hela skärmen, rubrik, en mening, en knapp och telefon. Fyra bildval att prova |
 
 ## Att stämma av med kunden
 
