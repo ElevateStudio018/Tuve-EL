@@ -362,28 +362,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   <div class="wrap">
     <span class="lbl-no">Förslag 6</span>
     <h2>Fullbild</h2>
-    <span class="lbl-new">Ny version</span>
-    <p>Avskalad klassisk hero: en bild, en rubrik, en mening och en knapp. Ingen extra grafik, inga effekter.</p>
+    <span class="lbl-new">Med video</span>
+    <p>Avskalad klassisk hero med bakgrundsvideo från Coverr (fri att använda kommersiellt). En rubrik, en mening och en knapp. Mobilen får en lättare version av videon.</p>
     <span class="lbl-type">Hanken Grotesk</span>
-    <div class="lbl-pick" role="group" aria-label="Byt bild i förslag 6">
-      <span>Prova bild:</span>
-      <button type="button" aria-pressed="true" data-wide="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">Bostadsgård, kväll</button>
-      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/trappa-led-belysning-bred-1600.webp" data-tall="../assets/img/projekt/trappa-led-belysning-800.webp">LED-trappa</button>
-      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/fasadbelysning-kvall-bred-1600.webp" data-tall="../assets/img/projekt/fasadbelysning-kvall-800.webp">Fasad, kväll</button>
-      <button type="button" aria-pressed="false" data-wide="../assets/img/hero/stock-elinstallation-2400.webp" data-tall="../assets/img/tjanster/elinstallation-800.webp">Stockfoto: elinstallation</button>
+    <div class="lbl-pick" role="group" aria-label="Byt video i förslag 6">
+      <span>Prova video:</span>
+      <button type="button" aria-pressed="true" data-video="glodlampor">Glödlampor</button>
+      <button type="button" aria-pressed="false" data-video="stad-natt">Stad på natten</button>
     </div>
   </div>
 </div>
 <section class="h6" aria-label="Förslag 6: Fullbild">
   <div class="h6-bg" aria-hidden="true">
-    <picture>
-      <source id="h6-src" media="(max-width: 700px)" srcset="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">
-      <img id="h6-img" src="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" alt="">
-    </picture>
-    <!-- Lägg videofilen i assets/video/hero.mp4 (Pexels-licens, gratis). Saknas den visas bilden ovan. -->
-    <video class="h6-video" id="h6-video" autoplay muted loop playsinline preload="metadata">
-      <source src="../assets/video/hero.mp4" type="video/mp4">
-    </video>
+    <img id="h6-img" src="../assets/video/glodlampor-poster.webp" alt="">
+    <!-- Videor från Coverr, se assets/video/KALLOR.md. Stillbilden ovan visas tills videon spelar. -->
+    <video class="h6-video" id="h6-video" muted loop playsinline preload="auto"></video>
   </div>
   <button class="h6-pause" id="h6-pause" type="button" aria-label="Pausa video" hidden><svg viewBox="0 0 14 14"><path id="h6-pause-ico" d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg></button>
 
@@ -685,21 +678,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <script>
 (function () {
-  // Förslag 6: byt bakgrundsbild
+  // Förslag 6: bakgrundsvideo, stillbilden ligger kvar som reserv
+  var vid = document.getElementById('h6-video');
+  var poster = document.getElementById('h6-img');
+  var pauseBtn = document.getElementById('h6-pause');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loadVideo(name) {
+    poster.src = '../assets/video/' + name + '-poster.webp';
+    if (still) { return; }
+    vid.classList.remove('on');
+    pauseBtn.setAttribute('aria-label', 'Pausa video');
+    document.getElementById('h6-pause-ico').setAttribute('d', 'M3 2h3v10H3zM8 2h3v10H8z');
+    vid.src = '../assets/video/' + name + (window.innerWidth <= 700 ? '-mobil.mp4' : '-1080.mp4');
+    var p = vid.play();
+    if (p && p.catch) { p.catch(function () {}); }
+  }
   var picks = document.querySelectorAll('.lbl-pick button');
   picks.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      document.getElementById('h6-src').srcset = btn.dataset.tall;
-      document.getElementById('h6-img').src = btn.dataset.wide;
+      loadVideo(btn.dataset.video);
       picks.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
     });
   });
-
-  // Förslag 6: bakgrundsvideo, bilden ligger kvar som reserv
-  var vid = document.getElementById('h6-video');
-  var pauseBtn = document.getElementById('h6-pause');
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { vid.removeAttribute('autoplay'); vid.pause(); }
-  else {
+  loadVideo('glodlampor');
+  if (!still) {
     vid.addEventListener('playing', function () { vid.classList.add('on'); pauseBtn.hidden = false; });
     pauseBtn.addEventListener('click', function () {
       var paused = vid.paused;

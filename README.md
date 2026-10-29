@@ -21,8 +21,9 @@ assets/
   img/tjanster/           De sex tjänstebilderna (stockfoton från gamla sajten)
   img/hero/               Gamla bildspelets stockfoton och breda beskärningar av projektbilder
   img/bilder.json         Vilken originalfil varje webbild kommer från
+  video/                  Bakgrundsvideor från Coverr (källor och licens i KALLOR.md)
 hero-forslag/
-  index.html              Alla fem förslag på en sida (öppna direkt i webbläsaren)
+  index.html              Alla sex förslag på en sida (öppna direkt i webbläsaren)
   skarmdumpar/            Desktop- och mobilvy av varje förslag
 ```
 
@@ -35,7 +36,7 @@ hero-forslag/
 | 3 | Eljour först | Konverteringsfokus: eljour och telefonnummer störst, kort offertformulär direkt i heron |
 | 4 | Bento | Rutnät med budskap, eljour, totalentreprenad, alla tjänster, behörigheter och bilder |
 | 5 | Kretsen | Typografisk; en animerad sladd kopplas in i offertknappen, filmband med projektbilder |
-| 6 | Fullbild | Avskalad klassisk hero: bild över hela skärmen, rubrik, en mening, en knapp och telefon. Fyra bildval att prova |
+| 6 | Fullbild med video | Avskalad klassisk hero med bakgrundsvideo från Coverr (glödlampor eller stad på natten), rubrik, en mening, en knapp och telefon |
 
 ## Att stämma av med kunden
 
