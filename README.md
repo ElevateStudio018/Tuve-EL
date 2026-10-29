@@ -1,50 +1,35 @@
 # Tuve El AB – ny hemsida
 
-Modernisering av [tuveel.se](https://tuveel.se/). Arbetet görs i två steg:
-
-1. **Skrapa och välja hero** (klart): allt innehåll och alla bilder från nuvarande sajt är sparade, och fem hero-förslag finns i `hero-forslag/`.
-2. **Bygga hela sidan** i stilen från det valda förslaget.
+Modernisering av [tuveel.se](https://tuveel.se/): en statisk enkelsidig sajt utan byggsteg. Öppna `index.html` direkt i webbläsaren eller lägg upp mappen på valfritt webbhotell (t.ex. Loopia).
 
 ## Struktur
 
 ```
-scraped/                  Råarkiv från tuveel.se (skrapat 2026-10-29)
-  innehall.md             All text på sajten, ordnad per sektion, plus offertformulärets fält
-  site-data.json          Samma innehåll strukturerat (kontakt, tjänster, behörigheter, formulär)
-  images/                 Alla originalbilder i full upplösning (42 st)
-  images-manifest.json    Käll-URL för varje bild
-  html/                   Renderad HTML och text från startsidan
-  screenshots/            Skärmdumpar av gamla sajten
+index.html                Hela sajten: hero med video, tjänster, eljour, om oss, projekt, offert/kontakt
+css/style.css             All styling (Hanken Grotesk, marinblå och bärnsten från logotypen)
+js/main.js                Meny, video, projektgalleri med bildvisare, offertformulär
 assets/
   brand/                  Logotyp (original + uppdelad i emblem, ordmärke och liggande variant), favicon
   img/projekt/            26 egna projektbilder som WebP (800 och 1600 px), med beskrivande namn
-  img/tjanster/           De sex tjänstebilderna (stockfoton från gamla sajten)
-  img/hero/               Gamla bildspelets stockfoton och breda beskärningar av projektbilder
+  img/tjanster/           Tjänstebilderna från gamla sajten (stockfoton)
+  img/hero/               Breda beskärningar och gamla bildspelets stockfoton (används inte just nu)
+  img/og-bild.jpg         Delningsbild för sociala medier
   img/bilder.json         Vilken originalfil varje webbild kommer från
-  video/                  Bakgrundsvideor från Coverr (källor och licens i KALLOR.md)
-hero-forslag/
-  index.html              Alla sex förslag på en sida (öppna direkt i webbläsaren)
-  skarmdumpar/            Desktop- och mobilvy av varje förslag
+  video/                  Herovideon, ihopklippt av tre Coverr-klipp (källor och licens i KALLOR.md)
+scraped/                  Råarkiv från gamla tuveel.se (skrapat 2026-10-29)
 ```
 
-## Hero-förslagen
+## Innan publicering
 
-| # | Namn | Kort beskrivning |
-|---|---|---|
-| 1 | Kvällsljus | Mörk helbild från egna belysningsprojekt som tonar mellan två kvällsbilder; offert, telefon och behörigheter i första vyn |
-| 2 | Nordiskt ljus | Ljus, skandinavisk delad layout med kollage av tre projektbilder och tjänsterna som etiketter |
-| 3 | Eljour först | Konverteringsfokus: eljour och telefonnummer störst, kort offertformulär direkt i heron |
-| 4 | Bento | Rutnät med budskap, eljour, totalentreprenad, alla tjänster, behörigheter och bilder |
-| 5 | Kretsen | Typografisk; en animerad sladd kopplas in i offertknappen, filmband med projektbilder |
-| 6 | Fullbild med video | Avskalad klassisk hero där tre Coverr-videor spelas efter varandra (glödlampor, skruvdragare, stad på natten); rubrik, en mening, en knapp och telefon |
+- **Offertformuläret** har ingen server. Utan inställning öppnar det besökarens e-postprogram med förfrågan ifylld till `info@tuveel.se`. För att skicka direkt från sidan (och kunna bifoga filer): skapa ett formulär hos t.ex. Formspree och klistra in adressen i `data-endpoint` på `<form id="offert-form">` i `index.html`.
+- **E-post:** gamla sajten visade `altin@tuveel.com` men länkade till `info@tuveel.se`. Nya sajten använder `info@tuveel.se` överallt; byt om det ska vara den andra.
+- **Sociala medier:** gamla sajten hade "Följ oss på Facebook/Instagram" utan länkar, så de är inte med. Lägg till i sidfoten om det finns konton.
+- **Organisationsnummer** och **F-skattsedel** saknas; bra att ha i sidfoten.
+- **Domän:** `canonical`, `og:url` och strukturerad data pekar på `https://tuveel.se/`.
 
-## Att stämma av med kunden
+## Gamla sajten
 
-- **E-post:** sajten visar `altin@tuveel.com` men länken går till `info@tuveel.se`. Vilken ska gälla?
-- **Sociala medier:** "Följ oss på Facebook/Instagram" saknar länkar. Finns det konton?
-- **Organisationsnummer** och **F-skattsedel** visas inte; bra att ha i sidfoten.
-- **Projektbilder:** namn och bildtexter är beskrivningar av vad som syns. Projektnamn eller orter kan läggas till om kunden vill.
-- Gamla sajten svarar med 403 för vanliga skript (Loopias brandvägg) men fungerar i en riktig webbläsare.
+`scraped/` innehåller all text (`innehall.md`, `site-data.json`), offertformulärets fält, 42 originalbilder och skärmdumpar. Gamla sajten svarar med 403 för vanliga skript (Loopias brandvägg) men fungerar i en riktig webbläsare.
 
 ## Logotyp
 
