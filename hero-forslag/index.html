@@ -292,7 +292,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .lbl-pick button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
 .h6 { position: relative; isolation: isolate; overflow: hidden; color: var(--white); background: var(--ink); min-height: max(600px, 100svh); display: grid; grid-template-rows: auto 1fr; font-family: var(--f-hanken); }
 .h6-bg { position: absolute; inset: 0; z-index: -1; }
-.h6-bg img { width: 100%; height: 100%; object-fit: cover; }
+.h6-bg img, .h6-video { width: 100%; height: 100%; object-fit: cover; }
+.h6-video { position: absolute; inset: 0; opacity: 0; transition: opacity .8s; }
+.h6-video.on { opacity: 1; }
+.h6-pause { position: absolute; z-index: 1; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 24px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .55); background: rgba(10, 12, 20, .3); color: var(--white); display: grid; place-items: center; cursor: pointer; }
+.h6-pause svg { width: 14px; height: 14px; }
 .h6-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 12, 20, .45) 0%, rgba(10, 12, 20, .08) 22%, rgba(10, 12, 20, .1) 50%, rgba(10, 12, 20, .7) 100%); }
 .h6 .top { padding-block: 28px; }
 .h6 .top .logo img { height: 44px; }
@@ -376,7 +380,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
       <source id="h6-src" media="(max-width: 700px)" srcset="../assets/img/projekt/bostadsgard-belysning-kvall-800.webp">
       <img id="h6-img" src="../assets/img/hero/bostadsgard-belysning-kvall-bred-1600.webp" alt="">
     </picture>
+    <!-- Lägg videofilen i assets/video/hero.mp4 (Pexels-licens, gratis). Saknas den visas bilden ovan. -->
+    <video class="h6-video" id="h6-video" autoplay muted loop playsinline preload="metadata">
+      <source src="../assets/video/hero.mp4" type="video/mp4">
+    </video>
   </div>
+  <button class="h6-pause" id="h6-pause" type="button" aria-label="Pausa video" hidden><svg viewBox="0 0 14 14"><path id="h6-pause-ico" d="M3 2h3v10H3zM8 2h3v10H8z" fill="currentColor"/></svg></button>
 
   <div class="wrap top">
     <a class="logo" href="#forslag-6"><img src="../assets/brand/tuve-el-liggande-vit.svg" alt="Tuve El AB"></a>
@@ -685,6 +694,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
       picks.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
     });
   });
+
+  // Förslag 6: bakgrundsvideo, bilden ligger kvar som reserv
+  var vid = document.getElementById('h6-video');
+  var pauseBtn = document.getElementById('h6-pause');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { vid.removeAttribute('autoplay'); vid.pause(); }
+  else {
+    vid.addEventListener('playing', function () { vid.classList.add('on'); pauseBtn.hidden = false; });
+    pauseBtn.addEventListener('click', function () {
+      var paused = vid.paused;
+      if (paused) { vid.play(); } else { vid.pause(); }
+      pauseBtn.setAttribute('aria-label', paused ? 'Pausa video' : 'Spela video');
+      document.getElementById('h6-pause-ico').setAttribute('d', paused ? 'M3 2h3v10H3zM8 2h3v10H8z' : 'M3 1.5l9 5.5-9 5.5z');
+    });
+  }
 
   // Förslag 3: formuläret är en förhandsvisning
   var form = document.getElementById('h3-form');
