@@ -1,0 +1,133 @@
+{
+  "foretag": "Tuve El AB",
+  "kalla": "https://tuveel.se/",
+  "skrapad": "2026-10-29",
+  "kontakt": {
+    "telefon": "0735 - 52 80 05",
+    "telefon_e164": "+46735528005",
+    "epost_visad": "altin@tuveel.com",
+    "epost_lank": "info@tuveel.se",
+    "adress": "Brunnehagen 185",
+    "postnummer": "417 47",
+    "ort": "Göteborg",
+    "facebook": null,
+    "instagram": null
+  },
+  "slogan": "Vi hjälper företag, fastighetsägare och privatpersoner i Göteborg.",
+  "om": [
+    "Tuve El AB är ett fullfjädrat byggföretag med spetskompetens mot elinstallationer.",
+    "Vår ambition är att vara Göteborgs proffsigaste elinstallationsföretag och det självklara valet för såväl privatpersoner som företag när det är dags att bygga om eller renovera.",
+    "Vi utför samtliga elinstallationsuppdrag, enkla som komplexa. Samt totalentreprenad (Invändig samt Utvändigt)"
+  ],
+  "behorigheter": {
+    "egen": "Certifikat från Elsäkerhetsverket",
+    "underentreprenorer": [
+      "ID06 registrerade hantverkare.",
+      "Auktoriserat VVS-företag.",
+      "Säker Vatten – branschstandarder.",
+      "Bygg Keramik Rådet – Behörig Våtrum."
+    ]
+  },
+  "tjanster": [
+    {
+      "namn": "Eljour",
+      "text": "Vår eljourtjänst är till för att säkerställa att du aldrig behöver stå i mörker. Med snabb och pålitlig assistans dygnet runt löser vi akuta elproblem omedelbart. Trygghet och tillgänglighet är kärnan i vår service, så du kan lita på oss när elen sviker.",
+      "bild": "assets/img/tjanster/eljour-1600.webp"
+    },
+    {
+      "namn": "Elinstallation",
+      "text": "Vår elinstallationstjänst är skräddarsydd för att möta dina behov och öka effektiviteten i ditt elektriska system. Med ett erfaret och kunnigt team erbjuder vi professionella installationer av hög kvalitet, från mindre hemmaförbättringar till större kommersiella projekt. Satsa på pålitliga elinstallationer för långsiktig säkerhet och optimal funktion.",
+      "bild": "assets/img/tjanster/elinstallation-1600.webp"
+    },
+    {
+      "namn": "Belysning",
+      "text": "Vår belysningstjänst är designad för att förvandla ditt utrymme genom smart och estetiskt tilltalande ljusdesign. Vi erbjuder skräddarsydda belysningslösningar som inte bara förbättrar atmosfären utan också ökar energieffektiviteten. Lita på vårt team av experter för att leverera innovativa belysningskoncept och skapa den perfekta ljusmiljön för ditt hem eller företag.",
+      "bild": "assets/img/tjanster/belysning-1600.webp"
+    },
+    {
+      "namn": "Elcentral",
+      "text": "Med vår elcentraltjänst säkerställer vi en trygg och effektiv fördelning av elektricitet i ditt hem eller företag. Vårt dedikerade team av elektriker hanterar installation, underhåll och uppgradering av elcentraler för att möta dina specifika behov. Lita på oss för att skapa en pålitlig och säker elektrisk infrastruktur som ger dig lugn och stabilitet i din strömförsörjning.",
+      "bild": "assets/img/tjanster/elcentral-1600.webp"
+    },
+    {
+      "namn": "Golvvärme",
+      "text": "Med vår golvvärmeservice erbjuder vi en bekväm och energieffektiv lösning för att värma upp ditt hem. Vårt erfarna team specialiserar sig på installation av golvvärme, vilket skapar en behaglig inomhusmiljö samtidigt som det minskar energiförbrukningen. Satsa på vår expertis för en lyxig och kostnadseffektiv upplevelse av golvvärme i ditt boende.",
+      "bild": "assets/img/tjanster/golvvarme-1600.webp"
+    },
+    {
+      "namn": "Laddbox",
+      "text": "Med vår laddboxtjänst gör vi övergången till elbilsliv enkel och bekväm. Våra specialister erbjuder skräddarsydda laddboxinstallationer för att möta dina specifika behov och säkerställa smidig laddning hemma eller på arbetsplatsen. Investera i vår laddboxservice för en effektiv och pålitlig laddningsinfrastruktur som främjar hållbar rörlighet.",
+      "bild": "assets/img/tjanster/laddbox-1600.webp"
+    }
+  ],
+  "partner": {
+    "namn": "Offerta",
+    "url": "https://offerta.se/"
+  },
+  "farger": {
+    "vit": "#FFFFFF",
+    "barnsten": "#ECA518",
+    "marin": "#2E3351"
+  },
+  "offertformular": [
+    {
+      "etikett": "Välj tjänst:",
+      "typ": "select-one",
+      "obligatorisk": true,
+      "val": [
+        "Eljour",
+        "Elinstallation",
+        "Belysning",
+        "Elcentral",
+        "Golvvärme",
+        "Laddbox",
+        "Annat"
+      ]
+    },
+    {
+      "etikett": "Förnamn",
+      "typ": "text",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Efternamn",
+      "typ": "text",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "E-post",
+      "typ": "email",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Telefon",
+      "typ": "tel",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Gatuadress",
+      "typ": "text",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Postnummer",
+      "typ": "number",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Ort",
+      "typ": "text",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Arbetsbeskrivning",
+      "typ": "textarea",
+      "obligatorisk": true
+    },
+    {
+      "etikett": "Bifoga fil:",
+      "typ": "file",
+      "obligatorisk": false
+    }
+  ]
+}
